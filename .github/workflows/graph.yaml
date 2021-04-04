@@ -23,6 +23,3 @@ jobs:
           graph_subgraph_name: 'subgraph-template'
           graph_account: 'TomAFrench'
           graph_config_file: 'subgraph.yaml'
-
-env:
-  CI: true
