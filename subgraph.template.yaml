@@ -10,7 +10,8 @@ dataSources:
     source:
       address: '{{contracts.erc20.address}}'
       abi: erc20
-      startBlock: {{ contracts.erc20.startBlock }}
+      # prettier-ignore
+      startBlock: {{contracts.erc20.startBlock}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
