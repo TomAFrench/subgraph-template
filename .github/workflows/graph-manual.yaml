@@ -11,9 +11,6 @@ on:
         description: 'Name of the subgraph'
         required: true
         default: 'subgraph-template'
-      account:
-        description: 'Name of the subgraph account or org name'
-        required: true
       branch:
         description: 'Branch to build (development, staging, master or another)'
         required: true
@@ -23,7 +20,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      GRAPH_SUBGRAPH_ACCOUNT: ${{ github.event.inputs.account }}
+      GRAPH_SUBGRAPH_ACCOUNT: ${{ github.repository_owner }}
       GRAPH_SUBGRAPH_NAME: ${{ github.event.inputs.subgraph }}
       GRAPH_CONFIG_FILE: subgraph.yaml
       NETWORK: ${{ github.event.inputs.network }}
