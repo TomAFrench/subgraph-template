@@ -12,7 +12,7 @@
     "deploy:mainnet": "yarn deploy ORGANISATION/SUBGRAPH",
     "codegen": "ts-node ./templatify.ts && graph codegen --debug --output-dir src/types/",
     "codegen:mainnet": "NETWORK_NAME=mainnet yarn codegen",
-    "publish-graph:mainnet": "yarn prepare:mainnet && yarn deploy:mainnet"
+    "publish-graph:mainnet": "yarn codegen:mainnet && yarn deploy:mainnet"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,10 @@
     {
       "name": "Tom French",
       "url": "https://github.com/tomafrench"
+    },
+    {
+      "name": "Dylan Golow",
+      "url": "https://github.com/dylangolow"
     }
   ],
   "license": "MIT",
