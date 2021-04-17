@@ -14,7 +14,6 @@ on:
       account:
         description: 'Name of the subgraph account or org name'
         required: true
-        default: $GITHUB_ACTOR
       branch:
         description: 'Branch to build (development, staging, master or another)'
         required: true
