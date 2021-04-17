@@ -1,0 +1,46 @@
+name: Deploy Graph
+
+on:
+  workflow_dispatch:
+    inputs:
+      network:
+        description: 'Network to build for (mainnet, mumbai)'
+        required: true
+        default: 'mumbai'
+      subgraph:
+        description: 'Name of the subgraph'
+        required: true
+        default: 'subgraph-template'
+      org:
+        description: 'Name of the subgraph org or your account name'
+        required: true
+        default: ${{github.repository_owner}}
+      branch:
+        description: 'Branch to build (development, staging, master or another one)'
+        required: true
+        default: 'development'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      GRAPH_SUBGRAPH_ORG: ${{ github.event.inputs.org }}
+      GRAPH_SUBGRAPH_NAME: ${{ github.event.inputs.subgraph }}
+      GRAPH_CONFIG_FILE: subgraph.yaml
+      NETWORK: ${{ github.event.inputs.network }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install
+        run: yarn --frozen-lockfile
+      - name: Codegen
+        run: yarn codegen:$NETWORK
+      - uses: gtaschuk/graph-deploy@v0.1.0
+        with:
+          graph_access_token: ${{secrets.GRAPH_ACCESS_TOKEN}}
+          graph_subgraph_name: $GRAPH_SUBGRAPH_NAME
+          graph_account: $GRAPH_SUBGRAPH_ORG
+          graph_config_file: $GRAPH_CONFIG_FILE

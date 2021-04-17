@@ -2,7 +2,7 @@ name: Deploy Graph
 
 on:
   push:
-    branches: [master]
+    branches: [staging]
 
 jobs:
   deploy:
@@ -10,7 +10,7 @@ jobs:
     env:
       GRAPH_SUBGRAPH_NAME: subgraph-template
       GRAPH_CONFIG_FILE: subgraph.yaml
-      NETWORK_NAME: mainnet
+      NETWORK_NAME: mumbai
     steps:
       - uses: actions/checkout@v2
       - name: Install node
