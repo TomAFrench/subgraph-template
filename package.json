@@ -7,7 +7,7 @@
     "lint": "eslint ./src",
     "local:create": "graph create --node http://localhost:8020/ ORGANISATION/SUBGRAPH",
     "local:remove": "graph remove --node http://localhost:8020/ ORGANISATION/SUBGRAPH",
-    "local:deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001ORGANISATION/SUBGRAPH",
+    "local:deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ORGANISATION/SUBGRAPH",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/",
     "deploy:mainnet": "yarn deploy ORGANISATION/SUBGRAPH",
     "codegen": "ts-node ./templatify.ts && graph codegen --debug --output-dir src/types/",
