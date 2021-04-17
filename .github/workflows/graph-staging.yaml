@@ -1,4 +1,4 @@
-name: Deploy Graph to Mumbai
+name: Deploy Graph to Staging
 
 on:
   push:
@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GRAPH_SUBGRAPH_ACCOUNT: ${{ github.repository_owner }}
-      GRAPH_SUBGRAPH_NAME: subgraph-template
+      GRAPH_SUBGRAPH_NAME: subgraph-template-staging
       GRAPH_CONFIG_FILE: subgraph.yaml
-      NETWORK_NAME: mumbai
+      NETWORK_NAME: mainnet
     steps:
       - uses: actions/checkout@v2
       - name: Install node
