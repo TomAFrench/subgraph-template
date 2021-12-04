@@ -6,15 +6,15 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: erc20
-    network: '{{networkName}}'
+    network: '{{network}}'
     source:
-      address: '{{contracts.erc20.address}}'
+      address: '{{erc20.address}}'
       abi: erc20
       # prettier-ignore
-      startBlock: {{contracts.erc20.startBlock}}
+      startBlock: {{ erc20.startBlock }}
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.4
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
       abis:
         - name: erc20

@@ -10,9 +10,8 @@
     "local:deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ORGANISATION/SUBGRAPH",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/",
     "deploy:mainnet": "yarn deploy ORGANISATION/SUBGRAPH",
-    "codegen": "ts-node ./templatify.ts && graph codegen --debug --output-dir src/types/",
-    "codegen:mainnet": "NETWORK_NAME=mainnet yarn codegen",
-    "publish-graph:mainnet": "yarn codegen:mainnet && yarn deploy:mainnet"
+    "codegen": "yarn generate-manifests && graph codegen --output-dir src/types/",
+    "generate-manifests": "ts-node ./scripts/generate-manifests"
   },
   "repository": {
     "type": "git",
